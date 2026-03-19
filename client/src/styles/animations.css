@@ -1,0 +1,97 @@
+/* ─── Vault Door Animation ─── */
+@keyframes vaultDialSpin {
+  0% { transform: rotate(0deg); }
+  30% { transform: rotate(120deg); }
+  50% { transform: rotate(90deg); }
+  70% { transform: rotate(200deg); }
+  100% { transform: rotate(180deg); }
+}
+
+@keyframes vaultDoorOpen {
+  0% { transform: perspective(800px) rotateY(0deg); opacity: 1; }
+  60% { transform: perspective(800px) rotateY(-85deg); opacity: 0.6; }
+  100% { transform: perspective(800px) rotateY(-95deg); opacity: 0; }
+}
+
+@keyframes vaultSlideIn {
+  0% { transform: translateY(30px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.vault-dial-spin {
+  animation: vaultDialSpin 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+.vault-door-open {
+  animation: vaultDoorOpen 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.8s forwards;
+  transform-origin: left center;
+}
+.vault-slide-in {
+  animation: vaultSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) 1.4s both;
+}
+
+/* ─── Save Pulse ─── */
+@keyframes savePulse {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+.save-pulse::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--vault-green);
+  animation: savePulse 0.6s ease-out forwards;
+}
+
+/* ─── Delete Shake ─── */
+@keyframes deleteShake {
+  0%, 100% { transform: translateX(0); }
+  10%, 50%, 90% { transform: translateX(-4px); }
+  30%, 70% { transform: translateX(4px); }
+}
+.delete-shake {
+  animation: deleteShake 0.4s ease-out;
+}
+
+/* ─── Flicker In (decrypted text reveal) ─── */
+@keyframes flickerIn {
+  0% { opacity: 0; filter: blur(2px); }
+  20% { opacity: 0.6; }
+  40% { opacity: 0.3; }
+  60% { opacity: 0.8; }
+  80% { opacity: 0.5; }
+  100% { opacity: 1; filter: blur(0); }
+}
+.flicker-in {
+  animation: flickerIn 0.3s ease-out forwards;
+}
+
+/* ─── Offline Desaturation ─── */
+.offline-mode {
+  filter: saturate(0.4);
+  transition: filter 0.5s ease;
+}
+.online-mode {
+  filter: saturate(1);
+  transition: filter 0.5s ease;
+}
+
+/* ─── Lock Toggle ─── */
+@keyframes lockToggle {
+  0% { transform: scale(1) rotate(0deg); }
+  40% { transform: scale(0.8) rotate(-8deg); }
+  60% { transform: scale(0.8) rotate(8deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+.lock-toggle {
+  animation: lockToggle 0.3s ease-out;
+}
+
+/* ─── Floating Pulse (for sync indicator) ─── */
+@keyframes syncPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.sync-pulse {
+  animation: syncPulse 1.5s ease-in-out infinite;
+}

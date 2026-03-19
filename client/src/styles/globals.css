@@ -1,0 +1,175 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── CSS Custom Properties: Digital Vault Design System ─── */
+:root {
+  /* Backgrounds */
+  --vault-bg: #0D1117;
+  --vault-surface: #161B22;
+  --vault-surface-elevated: #1C2128;
+  --vault-surface-3: #21262D;
+  --vault-hover: #30363D;
+
+  /* Borders */
+  --vault-border: #30363D;
+  --vault-border-subtle: #21262D;
+
+  /* Primary */
+  --vault-primary: #58A6FF;
+  --vault-primary-dim: #1F4B87;
+
+  /* Accents */
+  --vault-green: #3FB950;
+  --vault-red: #F85149;
+  --vault-gold: #D29922;
+  --vault-orange: #E3B341;
+
+  /* Text */
+  --vault-text: #E6EDF3;
+  --vault-text-secondary: #8B949E;
+  --vault-text-disabled: #484F58;
+
+  /* Note accent colors */
+  --note-blue: #58A6FF;
+  --note-green: #3FB950;
+  --note-red: #F85149;
+  --note-yellow: #D29922;
+  --note-purple: #BC8CFF;
+  --note-orange: #E3B341;
+  --note-pink: #F778BA;
+  --note-cyan: #56D364;
+
+  /* Typography */
+  --font-display: 'IBM Plex Mono', monospace;
+  --font-body: 'DM Sans', sans-serif;
+  --font-code: 'JetBrains Mono', monospace;
+
+  /* Font sizes */
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-md: 15px;
+  --text-lg: 16px;
+  --text-xl: 20px;
+  --text-2xl: 24px;
+}
+
+/* ─── Base Resets ─── */
+@layer base {
+  * {
+    @apply box-border;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--vault-bg);
+    color: var(--vault-text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
+  }
+
+  ::selection {
+    background-color: rgba(88, 166, 255, 0.3);
+    color: var(--vault-text);
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--vault-bg);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--vault-border);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--vault-text-disabled);
+  }
+
+  input, textarea, select {
+    font-family: var(--font-body);
+  }
+
+  /* Focus ring */
+  *:focus-visible {
+    outline: 2px solid var(--vault-primary);
+    outline-offset: 2px;
+  }
+}
+
+/* ─── Component Layer ─── */
+@layer components {
+  .vault-card {
+    @apply rounded-lg border;
+    background: var(--vault-surface);
+    border-color: var(--vault-border-subtle);
+  }
+
+  .vault-card-elevated {
+    @apply rounded-lg border;
+    background: var(--vault-surface-elevated);
+    border-color: var(--vault-border);
+  }
+
+  .vault-input {
+    @apply w-full rounded-lg px-4 py-3 text-sm transition-all;
+    background: var(--vault-bg);
+    border: 1px solid var(--vault-border);
+    color: var(--vault-text);
+  }
+  .vault-input:focus {
+    border-color: var(--vault-primary);
+    box-shadow: 0 0 0 1px var(--vault-primary);
+    outline: none;
+  }
+  .vault-input::placeholder {
+    color: var(--vault-text-disabled);
+  }
+
+  .vault-btn-primary {
+    @apply w-full py-3 rounded-lg font-semibold text-sm transition-all flex items-center justify-center;
+    background: var(--vault-primary);
+    color: #000;
+  }
+  .vault-btn-primary:hover {
+    background: #79B8FF;
+  }
+  .vault-btn-primary:active {
+    transform: scale(0.98);
+  }
+  .vault-btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .vault-btn-ghost {
+    @apply px-4 py-2 rounded-lg text-sm transition-all;
+    color: var(--vault-text-secondary);
+    background: transparent;
+  }
+  .vault-btn-ghost:hover {
+    background: var(--vault-hover);
+    color: var(--vault-text);
+  }
+
+  .vault-badge {
+    @apply inline-flex items-center px-2 py-0.5 rounded text-xs;
+    font-family: var(--font-display);
+    background: var(--vault-surface-3);
+    color: var(--vault-text-disabled);
+  }
+
+  .vault-badge-accent {
+    background: rgba(88, 166, 255, 0.15);
+    color: var(--vault-primary);
+  }
+
+  .vault-divider {
+    @apply w-full my-2;
+    height: 1px;
+    background: var(--vault-border-subtle);
+  }
+}
